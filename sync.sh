@@ -1,8 +1,11 @@
 #!/bin/sh
 
+
+#deklarasi variabel untuk menyimpan alamat directory
 dirawal=$1
 dirtujuan=$2
 
+#copy and replace file tujuan dengan file awal
 sync_replace (){
 	for FILE in `ls $dirawal`
 	do
@@ -10,6 +13,7 @@ sync_replace (){
 	done
 }
 
+#memaksa menyamakan file pada directory tujuan dengan directory awal
 sync_force (){
 	for FILE in `ls $dirtujuan`
 	do
@@ -21,6 +25,7 @@ sync_force (){
 	done
 }
 
+#menambah file yang belum ada di directory tujuan
 sync_add (){
 	for FILE in `ls $dirawal`
 	do
@@ -28,6 +33,7 @@ sync_add (){
 	done
 }
 
+#menyamakan file dengan ekstensi yang sama
 sync_extension (){
         if [ $param = "/r" ]; then
                 find $dirawal -name "*.$ext" -exec cp -v {} $dirtujuan \;
